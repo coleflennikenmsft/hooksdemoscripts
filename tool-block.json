@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "powershell": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.copilot\\hooks\\execute.ps1\"",
+        "timeoutSec": 10,
+        "comment": "Block dangerous terminal commands and log every tool call."
+      },
+      {
+        "type": "command",
+        "powershell": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.copilot\\hooks\\execute-ide.ps1\"",
+        "timeoutSec": 10,
+        "comment": "Block dangerous terminal commands and log every tool call."
+      }
+    ],
+    "postToolUse": [
+      {
+        "type": "command",
+        "powershell": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.copilot\\hooks\\post-tool.ps1\"",
+        "timeoutSec": 10,
+        "comment": "Log every tool result."
+      },
+      {
+        "type": "command",
+        "powershell": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.copilot\\hooks\\post-tool-ide.ps1\"",
+        "timeoutSec": 10,
+        "comment": "Log every tool result."
+      }
+      
+    ]
+  }
+}
